@@ -6,7 +6,7 @@ import { HomePage } from "./pages/HomePage.jsx";
 import { PortfolioPage } from "./pages/PortfolioPage.jsx";
 import { ProjectPage } from "./pages/ProjectPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage.jsx";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
 const themes = {
   dark: {
@@ -91,7 +91,6 @@ function TopographicBackground() {
 }
 
 export default function PortfolioApp() {
-    <Analytics />
   const [isDark, setIsDark] = useState(true);
   const [route, setRoute] = useRoute();
   const clock = useClock();
@@ -173,6 +172,7 @@ export default function PortfolioApp() {
 
   return (
     <div className={`portfolio-app ${isDark ? "theme-dark" : "light"} ${ready ? "is-ready" : "is-loading"}`} style={containerStyle}>
+      <Analytics />
       <TopographicBackground />
 
       <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", flex: "1 0 auto" }}>
