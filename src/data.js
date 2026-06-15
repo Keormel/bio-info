@@ -5,6 +5,12 @@ export const bio = {
     'Создаю аккуратные интерфейсы, собираю быстрые фронтенды и надежные API. Люблю простую архитектуру, понятный UI и честную верстку без лишнего шума.',
   status: 'Открыт к работе',
   location: 'Кишинёв, MD',
+  birthDate: '2007-01-16',
+  stats: {
+    experience: '3+',
+    projects: '25+',
+    code: '100K+',
+  },
 };
 
 export const skills = [
@@ -12,6 +18,7 @@ export const skills = [
   { name: 'TypeScript', level: 80 },
   { name: 'Node.js / Express', level: 75 },
   { name: 'CSS / Tailwind', level: 85 },
+  { name: 'Python', level: 70 },
 ];
 
 export const stack = [
@@ -21,6 +28,8 @@ export const stack = [
   { name: 'Node.js', icon: 'ti-brand-nodejs' },
   { name: 'Git', icon: 'ti-brand-git' },
   { name: 'SQL', icon: 'ti-database' },
+  { name: 'Tailwind', icon: 'ti-brand-tailwind' },
+  { name: 'Python', icon: 'ti-brand-python' },
 ];
 
 export const contacts = [
