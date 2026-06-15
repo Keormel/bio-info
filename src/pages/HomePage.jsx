@@ -53,7 +53,9 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
               Обо мне
             </SectionLabel>
             <div style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 14 }}>
-              <div className="avatar-box">{bio.name[0]}</div>
+              <div className="avatar-box">
+                {bio.avatar ? <img src={bio.avatar} alt={`${bio.name} avatar`} /> : bio.name[0]}
+              </div>
               <div>
                 <div style={{ fontSize: 26, fontWeight: 600, color: t.text, marginBottom: 4 }}>
                   {bio.name}

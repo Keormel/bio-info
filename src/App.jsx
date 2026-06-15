@@ -584,6 +584,14 @@ export default function PortfolioApp() {
           flex-shrink: 0;
         }
 
+        .avatar-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: inherit;
+          display: block;
+        }
+
         .status-dot {
           width: 8px;
           height: 8px;

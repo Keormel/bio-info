@@ -1,6 +1,7 @@
 export const bio = {
   name: 'Keormel',
-  role: 'Веб-разработчик · Full-stack',
+  avatar: 'image/avatar.jpg',
+  role: 'Full-stack developer',
   about:
     'Создаю аккуратные интерфейсы, собираю быстрые фронтенды и надежные API. Люблю простую архитектуру, понятный UI и честную верстку без лишнего шума.',
   status: 'Открыт к работе',
@@ -82,9 +83,9 @@ export const projects = [
     long:
       'Собрал приложение для бронирования с цепочкой шагов, минимальными отвлечениями и акцентом на прозрачный процесс подтверждения заявки.',
     tags: ['Product', 'Booking', 'Mobile'],
-    url: 'https://example.com/booking',
-    repo: 'https://github.com/USERNAME/booking-app',
-    date: '2025',
+    url: '#',
+    repo: '#',
+    date: '2023',
     icon: 'ti-calendar-event',
     color: '#0f766e',
     challenge: 'Сделать процесс бронирования коротким и предсказуемым.',

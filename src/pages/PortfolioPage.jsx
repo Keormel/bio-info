@@ -28,7 +28,6 @@ export function PortfolioPage({ t, onBackHome, onOpenProject }) {
               <ProjectVisual project={project} />
               <div>
                 <div className="project-year">{project.date || project.year || "2025"}</div>
-                <div className="project-role">{project.role || "Full-stack"}</div>
               </div>
             </div>
 

@@ -1,10 +1,13 @@
-import { bio } from "../data.js";
+import { bio, contacts } from "../data.js";
 import { Cell } from "../components/Cell.jsx";
 import { SectionLabel } from "../components/SectionLabel.jsx";
 import { Tag } from "../components/Tag.jsx";
 import { ProjectVisual } from "../components/ProjectVisual.jsx";
 
 export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
+  const telegramUrl = contacts.find((contact) => contact.label === "Telegram")?.url || "#";
+  const photosUrl = project.photosUrl || telegramUrl;
+
   return (
     <div className="page-shell">
       <div className="page-head">
@@ -26,7 +29,6 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
             <div className="project-hero-text">
               <div className="project-meta-line">
                 <span>{project.date || project.year || "2025"}</span>
-                <span>{project.role || "Front-end"}</span>
               </div>
               <div className="project-title large">{project.title}</div>
               <div className="project-desc">{project.desc}</div>
@@ -71,6 +73,12 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
             {project.stack.map((item) => (
               <Tag key={item}>{item}</Tag>
             ))}
+          </div>
+          <div className="inline-actions">
+            <a href={photosUrl} target="_blank" rel="noreferrer" className="inline-button">
+              <i className="ti ti-photo" />
+              <span>Фотографии проекта</span>
+            </a>
           </div>
         </Cell>
 
