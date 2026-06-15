@@ -102,9 +102,37 @@ export default function PortfolioApp() {
       return;
     }
 
-    document.title = route.page === "project" && project ? `${project.title} · Portfolio` : "Portfolio";
     document.body.classList.toggle("light", !isDark);
-  }, [isDark, project, route.page]);
+  }, [isDark]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return;
+    }
+
+    const nickname = "keormel";
+    const frames = [
+      nickname,
+      "keormel.",
+      "keormel..",
+      "keormel...",
+      "eormel k",
+      "ormel ke",
+      "rmel keo",
+      "mel keor",
+      "el keorm",
+      "l keorme",
+    ];
+    let index = 0;
+
+    document.title = frames[index];
+    const titleTimer = window.setInterval(() => {
+      index = (index + 1) % frames.length;
+      document.title = frames[index];
+    }, 650);
+
+    return () => window.clearInterval(titleTimer);
+  }, []);
 
   const containerStyle = {
     minHeight: "100vh",
