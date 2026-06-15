@@ -91,6 +91,7 @@ function TopographicBackground() {
 }
 
 export default function PortfolioApp() {
+    <Analytics />
   const [isDark, setIsDark] = useState(true);
   const [route, setRoute] = useRoute();
   const clock = useClock();
