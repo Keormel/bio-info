@@ -30,6 +30,65 @@ const themes = {
   },
 };
 
+const contourOpenPaths = [
+  "M -110 126 C 30 34 96 155 206 102 C 342 37 334 -72 512 -42",
+  "M -108 216 C 38 126 142 254 268 176 C 396 98 426 -10 596 18",
+  "M -95 306 C 78 212 174 362 342 256 C 482 168 522 40 710 62",
+  "M -80 402 C 126 292 238 452 436 338 C 594 248 670 112 842 145",
+  "M -66 510 C 176 362 322 556 542 432 C 744 318 800 208 988 240",
+  "M 72 716 C 230 594 366 664 492 752 C 622 842 752 852 872 770 C 1014 674 1038 538 1166 462 C 1296 386 1414 484 1606 356",
+  "M 178 32 C 214 126 336 148 402 54 C 470 -44 554 -18 616 62 C 686 154 632 268 716 336 C 806 408 904 362 936 250 C 982 86 1078 68 1216 118",
+  "M 294 0 C 238 128 330 218 454 190 C 576 162 620 242 578 340 C 520 478 600 594 736 640 C 924 704 1006 606 1054 466",
+  "M 454 -52 C 386 102 448 212 574 232 C 704 252 738 350 686 456 C 624 584 704 712 850 742 C 1036 780 1120 650 1172 506",
+  "M 637 -54 C 572 82 614 182 728 202 C 858 225 882 328 826 428 C 760 546 842 674 978 696 C 1140 722 1244 596 1304 462",
+  "M 850 -22 C 958 72 1084 76 1182 -4 C 1308 -106 1448 -50 1518 74 C 1582 188 1544 302 1622 408",
+  "M 842 120 C 990 206 1104 166 1190 68 C 1306 -66 1472 -4 1530 144 C 1576 260 1548 410 1652 502",
+  "M 872 248 C 1026 330 1146 300 1236 184 C 1338 52 1486 116 1532 256 C 1574 386 1548 532 1644 630",
+  "M 904 380 C 1064 458 1174 420 1270 306 C 1374 182 1484 256 1528 382 C 1572 508 1544 666 1640 752",
+  "M 986 875 C 1076 726 1182 648 1316 710 C 1434 764 1514 720 1608 628",
+  "M 1132 906 C 1226 770 1326 752 1438 820 C 1502 858 1564 852 1648 782",
+];
+
+const contourLoopPaths = [
+  "M 74 602 C 108 466 276 390 392 458 C 516 530 500 684 386 760 C 252 850 38 760 74 602 Z",
+  "M 130 606 C 164 506 284 462 368 514 C 458 568 446 676 358 730 C 262 788 106 724 130 606 Z",
+  "M 190 612 C 226 548 296 526 352 562 C 408 598 406 666 344 700 C 278 736 168 690 190 612 Z",
+  "M 250 622 C 276 592 318 586 346 608 C 378 634 370 670 334 688 C 292 708 232 672 250 622 Z",
+  "M 642 34 C 686 -84 850 -90 904 28 C 958 150 848 238 746 190 C 664 152 608 124 642 34 Z",
+  "M 690 46 C 724 -24 824 -28 860 44 C 896 118 828 170 766 142 C 716 120 670 98 690 46 Z",
+  "M 732 52 C 754 20 806 14 826 54 C 844 90 810 118 780 102 C 750 88 720 82 732 52 Z",
+  "M 884 300 C 950 174 1110 198 1174 326 C 1242 462 1122 588 980 540 C 850 496 822 416 884 300 Z",
+  "M 938 328 C 986 244 1086 262 1128 348 C 1172 438 1092 514 1002 482 C 918 454 898 402 938 328 Z",
+  "M 994 352 C 1024 316 1072 322 1094 370 C 1116 418 1072 454 1024 438 C 982 424 970 386 994 352 Z",
+  "M 1226 132 C 1294 34 1440 56 1496 166 C 1550 274 1442 374 1324 330 C 1204 286 1168 216 1226 132 Z",
+  "M 1286 160 C 1330 106 1414 118 1448 182 C 1482 246 1416 306 1350 282 C 1284 258 1252 204 1286 160 Z",
+  "M 1344 186 C 1370 166 1410 170 1424 204 C 1438 238 1404 264 1372 252 C 1340 240 1322 210 1344 186 Z",
+];
+
+function TopographicBackground() {
+  const renderPaths = (prefix) => (
+    <>
+      {contourOpenPaths.map((path, index) => (
+        <path key={`${prefix}-open-${index}`} d={path} />
+      ))}
+      {contourLoopPaths.map((path, index) => (
+        <path key={`${prefix}-loop-${index}`} d={path} />
+      ))}
+    </>
+  );
+
+  return (
+    <div className="topographic-background" aria-hidden="true">
+      <svg className="topographic-map topographic-map-primary" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <g>{renderPaths("primary")}</g>
+      </svg>
+      <svg className="topographic-map topographic-map-secondary" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <g transform="translate(1600 900) rotate(180)">{renderPaths("secondary")}</g>
+      </svg>
+    </div>
+  );
+}
+
 export default function PortfolioApp() {
   const [isDark, setIsDark] = useState(true);
   const [route, setRoute] = useRoute();
@@ -49,7 +108,7 @@ export default function PortfolioApp() {
 
   const containerStyle = {
     minHeight: "100vh",
-    background: t.bg,
+    background: isDark ? "#030303" : "#f7f4ec",
     color: t.text,
     padding: route.page === "home" ? "20px 32px" : "24px 16px 36px",
     display: "flex",
@@ -67,6 +126,11 @@ export default function PortfolioApp() {
     "--accent": t.accent,
     "--accent2": t.accent2,
     "--card-r": "16px",
+    "--topo-bg": isDark ? "#030303" : "#f7f4ec",
+    "--topo-line": isDark ? "rgba(255,255,255,0.72)" : "rgba(17,24,39,0.24)",
+    "--topo-line-soft": isDark ? "rgba(255,255,255,0.32)" : "rgba(17,24,39,0.12)",
+    "--panel-bg": isDark ? "rgba(18,18,18,0.82)" : "rgba(255,255,255,0.74)",
+    "--chip-bg": isDark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.58)",
   };
 
   const goHome = () => navigateTo("/", setRoute);
@@ -75,6 +139,8 @@ export default function PortfolioApp() {
 
   return (
     <div className={`portfolio-app ${isDark ? "theme-dark" : "light"} ${ready ? "is-ready" : "is-loading"}`} style={containerStyle}>
+      <TopographicBackground />
+
       <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", flex: "1 0 auto" }}>
         {route.page === "home" && <HomePage t={t} clock={clock} isDark={isDark} setIsDark={setIsDark} onGoToPortfolio={goPortfolio} />}
 
@@ -111,7 +177,61 @@ export default function PortfolioApp() {
         button, a { -webkit-tap-highlight-color: transparent; }
 
         .portfolio-app {
+          position: relative;
           overflow-x: hidden;
+          isolation: isolate;
+          background: var(--topo-bg);
+        }
+
+        .topographic-background {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          overflow: hidden;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 18% 74%, rgba(124, 58, 237, 0.08), transparent 28%),
+            radial-gradient(circle at 78% 18%, rgba(124, 58, 237, 0.05), transparent 24%),
+            var(--topo-bg);
+          transition: background 0.25s ease;
+        }
+
+        .topographic-map {
+          position: absolute;
+          inset: -8%;
+          width: 116%;
+          height: 116%;
+          fill: none;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+
+        .topographic-map path {
+          vector-effect: non-scaling-stroke;
+        }
+
+        .topographic-map-primary {
+          color: var(--topo-line);
+          stroke: currentColor;
+          stroke-width: 1.15;
+          opacity: 0.9;
+          animation: topoDriftPrimary 34s ease-in-out infinite alternate;
+        }
+
+        .topographic-map-secondary {
+          color: var(--topo-line-soft);
+          stroke: currentColor;
+          stroke-width: 0.95;
+          opacity: 0.72;
+          animation: topoDriftSecondary 46s ease-in-out infinite alternate;
+        }
+
+        .app-shell,
+        .site-footer {
+          position: relative;
+          z-index: 1;
         }
 
         .app-shell {
@@ -141,6 +261,24 @@ export default function PortfolioApp() {
 
         .site-footer a:hover {
           color: var(--accent2);
+        }
+
+        @keyframes topoDriftPrimary {
+          from {
+            transform: translate3d(-1.8%, -1.2%, 0) scale(1.02);
+          }
+          to {
+            transform: translate3d(1.6%, 1.1%, 0) scale(1.05);
+          }
+        }
+
+        @keyframes topoDriftSecondary {
+          from {
+            transform: translate3d(1.4%, 1.1%, 0) scale(1.08);
+          }
+          to {
+            transform: translate3d(-1.4%, -1%, 0) scale(1.04);
+          }
         }
 
         .grid-shell,
@@ -191,7 +329,7 @@ export default function PortfolioApp() {
           gap: 8px;
           border-radius: 10px;
           border: 0.5px solid var(--border);
-          background: var(--bg3);
+          background: var(--chip-bg);
           color: var(--text);
           text-decoration: none;
           cursor: pointer;
@@ -235,7 +373,7 @@ export default function PortfolioApp() {
           margin-top: 18px;
           padding: 14px 16px;
           border-radius: 12px;
-          background: var(--bg3);
+          background: var(--chip-bg);
           color: var(--text);
           font-size: 14px;
         }
@@ -321,7 +459,7 @@ export default function PortfolioApp() {
           color: var(--text2);
           padding: 8px 10px;
           border-radius: 10px;
-          background: var(--bg3);
+          background: var(--chip-bg);
         }
 
         .soft-link {
@@ -334,7 +472,7 @@ export default function PortfolioApp() {
 
         .theme-button {
           width: 100%;
-          background: var(--bg3);
+          background: var(--chip-bg);
         }
 
         .metric-list,
@@ -352,7 +490,7 @@ export default function PortfolioApp() {
           gap: 12px;
           padding: 12px 14px;
           border-radius: 12px;
-          background: var(--bg3);
+          background: var(--chip-bg);
           color: var(--text);
           font-size: 14px;
         }
@@ -374,7 +512,7 @@ export default function PortfolioApp() {
         .inline-button {
           padding: 12px 16px;
           min-height: 46px;
-          background: var(--bg3);
+          background: var(--chip-bg);
           font-size: 14px;
         }
 
@@ -414,12 +552,13 @@ export default function PortfolioApp() {
         }
 
         .cell {
-          background: var(--bg2);
+          background: var(--panel-bg);
           border: 0.5px solid var(--border);
           border-radius: var(--card-r);
           padding: 28px;
           position: relative;
           overflow: hidden;
+          backdrop-filter: blur(18px);
           opacity: 0;
           transform: translateY(10px);
           animation: cellIn 420ms ease forwards;
