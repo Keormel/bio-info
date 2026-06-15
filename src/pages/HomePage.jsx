@@ -81,7 +81,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
 
           {/* Skills */}
           <Cell delay={1}>
-            <SectionLabel icon="line-dots" t={t}>
+            <SectionLabel icon="table" t={t}>
               Навыки
             </SectionLabel>
             {skills.map((skill, index) => (
@@ -106,7 +106,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
           </Cell>
 
           {/* Time + Stats */}
-          <Cell delay={3} style={{ marginTop: 28 }}>
+          <Cell className={`home-time-card${bio.localTimeGif ? " has-time-gif" : ""}`} delay={3} style={{ marginTop: 28 }}>
             <SectionLabel icon="clock-hour-3" t={t}>
               Локальное время
             </SectionLabel>
@@ -130,6 +130,11 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
                 <div style={{ fontSize: 11, color: t.text2, textTransform: "uppercase", letterSpacing: "0.05em" }}>Строк кода</div>
               </div>
             </div>
+            {bio.localTimeGif && (
+              <div className="home-time-gif">
+                <img src={bio.localTimeGif} alt="" loading="lazy" />
+              </div>
+            )}
           </Cell>
         </div>
 
