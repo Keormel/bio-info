@@ -4,7 +4,7 @@ import { SectionLabel } from "../components/SectionLabel.jsx";
 export function NotFoundPage({ t, onBackHome, onBackToPortfolio }) {
   return (
     <div className="page-shell">
-      <Cell style={{ maxWidth: 720, margin: "0 auto" }} delay={0}>
+      <Cell style={{ width: "100%", maxWidth: 960, margin: "0 auto" }} delay={0}>
         <SectionLabel icon="alert-circle" t={t}>
           Не найдено
         </SectionLabel>

@@ -21,7 +21,7 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
       </div>
 
       <div className="project-grid">
-        <Cell delay={0} style={{ gridColumn: "span 4" }}>
+        <Cell delay={0} style={{ gridColumn: "span 12" }}>
           <div className="project-hero">
             <div className="project-preview project-preview-large" style={{ background: project.color }}>
               <i className={`ti ${project.icon}`} />
@@ -52,21 +52,21 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
           </div>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 2" }} delay={1}>
+        <Cell style={{ gridColumn: "span 6" }} delay={1}>
           <SectionLabel icon="report-search" t={t}>
             Задача
           </SectionLabel>
           <p className="detail-text">{project.challenge}</p>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 2" }} delay={2}>
+        <Cell style={{ gridColumn: "span 6" }} delay={2}>
           <SectionLabel icon="target-arrow" t={t}>
             Результат
           </SectionLabel>
           <p className="detail-text">{project.result}</p>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 2" }} delay={3}>
+        <Cell style={{ gridColumn: "span 6" }} delay={3}>
           <SectionLabel icon="chart-bar" t={t}>
             Стек
           </SectionLabel>
@@ -77,7 +77,7 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
           </div>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 2" }} delay={4}>
+        <Cell style={{ gridColumn: "span 6" }} delay={4}>
           <SectionLabel icon="sparkles" t={t}>
             Возможности
           </SectionLabel>
@@ -91,7 +91,7 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
           </div>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 4" }} delay={5}>
+        <Cell style={{ gridColumn: "span 12" }} delay={5}>
           <SectionLabel icon="user-circle" t={t}>
             Автор
           </SectionLabel>

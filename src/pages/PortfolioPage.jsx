@@ -22,7 +22,7 @@ export function PortfolioPage({ t, onBackHome, onOpenProject }) {
 
       <div className="portfolio-grid">
         {projects.map((project, index) => (
-          <Cell key={project.id} delay={index} style={{ gridColumn: "span 2" }} onClick={() => onOpenProject(project.id)}>
+          <Cell key={project.id} delay={index} style={{ gridColumn: "span 6" }} onClick={() => onOpenProject(project.id)}>
             <div className="project-card-top">
               <div className="project-preview" style={{ background: project.color }}>
                 <i className={`ti ${project.icon}`} />

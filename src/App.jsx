@@ -48,12 +48,14 @@ export default function PortfolioApp() {
   }, [isDark, project, route.page]);
 
   const containerStyle = {
-    minHeight: "100vh",
+    height: route.page === "home" ? "100vh" : "auto",
     background: t.bg,
     color: t.text,
-    padding: "24px 16px 36px",
+    padding: route.page === "home" ? "20px 32px" : "24px 16px 36px",
     transition: "background 0.25s ease, color 0.25s ease",
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    overflowY: route.page === "home" ? "hidden" : "auto",
+    overflowX: "hidden",
     "--bg": t.bg,
     "--bg2": t.bg2,
     "--bg3": t.bg3,
@@ -71,7 +73,7 @@ export default function PortfolioApp() {
 
   return (
     <div className={`portfolio-app ${isDark ? "theme-dark" : "light"} ${ready ? "is-ready" : "is-loading"}`} style={containerStyle}>
-      <div className="app-shell">
+      <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", height: route.page === "home" ? "100%" : "auto" }}>
         {route.page === "home" && <HomePage t={t} clock={clock} isDark={isDark} setIsDark={setIsDark} onGoToPortfolio={goPortfolio} />}
 
         {route.page === "portfolio" && <PortfolioPage t={t} onBackHome={goHome} onOpenProject={goProject} />}
@@ -102,7 +104,7 @@ export default function PortfolioApp() {
         }
 
         .app-shell {
-          max-width: 1120px;
+          width: min(1440px, calc(100vw - 32px));
           margin: 0 auto;
         }
 
@@ -110,14 +112,16 @@ export default function PortfolioApp() {
         .portfolio-grid,
         .project-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 12px;
+          grid-template-columns: repeat(12, minmax(0, 1fr));
+          gap: 16px;
         }
 
         .page-shell {
           display: flex;
           flex-direction: column;
           gap: 16px;
+          width: 100%;
+          align-items: center;
         }
 
         .page-head {
@@ -125,20 +129,21 @@ export default function PortfolioApp() {
           align-items: flex-start;
           justify-content: space-between;
           gap: 16px;
+          width: 100%;
         }
 
         .page-title {
           margin: 0 0 8px;
-          font-size: 30px;
+          font-size: 36px;
           line-height: 1.1;
           letter-spacing: -0.03em;
         }
 
         .page-subtitle {
           margin: 0;
-          max-width: 720px;
+          max-width: 860px;
           color: var(--text2);
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.65;
         }
 
@@ -160,8 +165,9 @@ export default function PortfolioApp() {
 
         .back-button,
         .theme-button {
-          padding: 10px 12px;
-          min-height: 40px;
+          padding: 12px 16px;
+          min-height: 48px;
+          font-size: 14px;
         }
 
         .back-button:hover,
@@ -191,30 +197,30 @@ export default function PortfolioApp() {
 
         .cta-row,
         .card-footer {
-          margin-top: 14px;
-          padding: 12px 14px;
-          border-radius: 10px;
+          margin-top: 18px;
+          padding: 14px 16px;
+          border-radius: 12px;
           background: var(--bg3);
           color: var(--text);
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .project-title {
-          font-size: 20px;
+          font-size: 24px;
           font-weight: 600;
           color: var(--text);
-          margin: 14px 0 8px;
+          margin: 16px 0 10px;
           letter-spacing: -0.02em;
         }
 
         .project-title.large {
-          font-size: 28px;
-          margin-top: 12px;
+          font-size: 36px;
+          margin-top: 14px;
         }
 
         .project-desc,
         .detail-text {
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.7;
           color: var(--text2);
         }
@@ -223,26 +229,26 @@ export default function PortfolioApp() {
         .project-role,
         .detail-author-role {
           color: var(--text2);
-          font-size: 12px;
+          font-size: 13px;
         }
 
         .project-preview {
-          width: 54px;
-          height: 54px;
-          border-radius: 14px;
+          width: 72px;
+          height: 72px;
+          border-radius: 18px;
           display: flex;
           align-items: center;
           justify-content: center;
           color: #fff;
-          font-size: 24px;
+          font-size: 30px;
           flex-shrink: 0;
         }
 
         .project-preview-large {
-          width: 92px;
-          height: 92px;
-          font-size: 42px;
-          border-radius: 20px;
+          width: 124px;
+          height: 124px;
+          font-size: 54px;
+          border-radius: 24px;
         }
 
         .project-hero {
@@ -256,18 +262,18 @@ export default function PortfolioApp() {
         .tag-row {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
-          margin-top: 14px;
+          gap: 8px;
+          margin-top: 16px;
         }
 
         .tag-pill {
           display: inline-flex;
           align-items: center;
-          padding: 2px 8px;
-          border-radius: 6px;
+          padding: 4px 10px;
+          border-radius: 8px;
           background: rgba(124, 58, 237, 0.12);
           color: var(--accent2);
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.4;
         }
 
@@ -276,18 +282,18 @@ export default function PortfolioApp() {
           display: flex;
           align-items: center;
           gap: 6px;
-          font-size: 12px;
+          font-size: 13px;
           color: var(--text2);
-          padding: 5px 8px;
-          border-radius: 8px;
+          padding: 8px 10px;
+          border-radius: 10px;
           background: var(--bg3);
         }
 
         .soft-link {
           text-decoration: none;
           justify-content: flex-start;
-          margin-bottom: 7px;
-          padding: 8px 10px;
+          margin-bottom: 10px;
+          padding: 10px 12px;
           color: var(--text);
         }
 
@@ -309,11 +315,11 @@ export default function PortfolioApp() {
           align-items: center;
           justify-content: space-between;
           gap: 12px;
-          padding: 10px 12px;
-          border-radius: 10px;
+          padding: 12px 14px;
+          border-radius: 12px;
           background: var(--bg3);
           color: var(--text);
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .feature-row {
@@ -331,9 +337,10 @@ export default function PortfolioApp() {
         }
 
         .inline-button {
-          padding: 10px 14px;
-          min-height: 40px;
+          padding: 12px 16px;
+          min-height: 46px;
           background: var(--bg3);
+          font-size: 14px;
         }
 
         .inline-button.secondary {
@@ -341,22 +348,22 @@ export default function PortfolioApp() {
         }
 
         .detail-author-name {
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 600;
           color: var(--text);
           margin-bottom: 2px;
         }
 
         .avatar-box {
-          width: 56px;
-          height: 56px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
           background: var(--accent);
           border: 0.5px solid rgba(255, 255, 255, 0.12);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 22px;
+          font-size: 28px;
           font-weight: 700;
           color: #fff;
           flex-shrink: 0;
@@ -375,7 +382,7 @@ export default function PortfolioApp() {
           background: var(--bg2);
           border: 0.5px solid var(--border);
           border-radius: var(--card-r);
-          padding: 20px;
+          padding: 28px;
           position: relative;
           overflow: hidden;
           opacity: 0;
