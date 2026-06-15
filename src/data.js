@@ -6,7 +6,7 @@ export const bio = {
     'Создаю аккуратные интерфейсы, собираю быстрые фронтенды и надежные API. Люблю простую архитектуру, понятный UI и честную верстку без лишнего шума.',
   status: 'Открыт к работе',
   location: 'Кишинёв, MD',
-  localTimeGif: '',
+  localTimeGif: 'https://i.imgur.com/JX2KebW.gif',
   birthDate: '2007-01-16',
   stats: {
     experience: '3+',

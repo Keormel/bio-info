@@ -106,7 +106,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
           </Cell>
 
           {/* Time + Stats */}
-          <Cell className={`home-time-card${bio.localTimeGif ? " has-time-gif" : ""}`} delay={3} style={{ marginTop: 28 }}>
+          <Cell className={`home-time-card${bio.localTimeGif ? " has-time-gif" : ""}`} delay={3} style={{ marginTop: 0 }}>
             <SectionLabel icon="clock-hour-3" t={t}>
               Локальное время
             </SectionLabel>
@@ -158,6 +158,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
           {/* Portfolio - with animated gradient */}
           <Cell delay={4} onClick={onGoToPortfolio} style={{ 
             position: "relative",
+            transform: "translateY(33px)",
             overflow: "hidden",
             cursor: "pointer",
             background: `linear-gradient(-45deg, ${t.bg3}, ${t.bg2}, ${t.bg3})`,
@@ -194,7 +195,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
               transition: "background 0.25s ease",
             }} />
 
-            <div style={{ position: "relative", zIndex: 1 }}>
+            <div style={{ position: "relative", zIndex: 1,}}>
               <SectionLabel icon="layout-grid" t={t}>
                 Портфолио
               </SectionLabel>
