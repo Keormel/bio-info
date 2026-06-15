@@ -8,15 +8,16 @@ import { Tag } from "../components/Tag.jsx";
 export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
   const age = useAge(bio.birthDate);
   return (
-    <div style={{ 
+    <div className="home-layout" style={{ 
       display: "flex", 
       gap: "20px",
       height: "100%",
       alignItems: "flex-start"
     }}>
       {/* Left sidebar - Theme button */}
-      <div style={{ flexShrink: 0 }}>
+      <div className="home-theme-rail" style={{ flexShrink: 0 }}>
         <button 
+          className="home-theme-toggle"
           style={{
             width: "72px",
             height: "72px",
@@ -43,23 +44,23 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
       </div>
 
       {/* Main content - Two columns */}
-      <div style={{ display: "flex", gap: "20px", flex: 1, minWidth: 0 }}>
+      <div className="home-content" style={{ display: "flex", gap: "20px", flex: 1, minWidth: 0 }}>
         
         {/* Left column - About + Skills */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 1.2 }}>
+        <div className="home-column home-column-about" style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 1.2 }}>
           {/* About info */}
           <Cell delay={0}>
             <SectionLabel icon="user-circle" t={t}>
               Обо мне
             </SectionLabel>
-            <div style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 14 }}>
+            <div className="bio-intro" style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 14 }}>
               <div className="avatar-box">
                 {bio.avatar ? <img src={bio.avatar} alt={`${bio.name} avatar`} /> : bio.name[0]}
               </div>
-              <div>
-                <div style={{ fontSize: 26, fontWeight: 600, color: t.text, marginBottom: 4 }}>
+              <div className="bio-name-block">
+                <div className="bio-name" style={{ fontSize: 26, fontWeight: 600, color: t.text, marginBottom: 4 }}>
                   {bio.name}
-                  <span style={{ fontSize: 16, color: t.accent, marginLeft: 8, fontWeight: 500 }}>
+                  <span className="bio-age" style={{ fontSize: 16, color: t.accent, marginLeft: 8, fontWeight: 500 }}>
                     {age}
                   </span>
                 </div>
@@ -90,7 +91,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
         </div>
 
         {/* Middle column - Contacts + Time + Stats */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 0.9 }}>
+        <div className="home-column home-column-meta" style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 0.9 }}>
           {/* Contacts */}
           <Cell delay={2}>
             <SectionLabel icon="mail" t={t}>
@@ -115,7 +116,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
             <div style={{ fontSize: 14, color: t.text2, marginBottom: 16 }}>{bio.location}</div>
             
             {/* Interesting stats */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, paddingTop: 16, borderTop: `0.5px solid ${t.border}` }}>
+            <div className="home-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, paddingTop: 16, borderTop: `0.5px solid ${t.border}` }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 20, fontWeight: 700, color: t.accent, marginBottom: 4 }}>{bio.stats.experience}</div>
                 <div style={{ fontSize: 11, color: t.text2, textTransform: "uppercase", letterSpacing: "0.05em" }}>Опыт</div>
@@ -133,13 +134,13 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
         </div>
 
         {/* Right column - Stack + Portfolio */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 1 }}>
+        <div className="home-column home-column-stack" style={{ display: "flex", flexDirection: "column", gap: "20px", flex: 1 }}>
           {/* Stack */}
           <Cell delay={5}>
             <SectionLabel icon="stack" t={t}>
               Стек
             </SectionLabel>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+            <div className="home-stack-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
               {stack.map((item) => (
                 <div key={item.name} className="stack-pill">
                   <i className={`ti ${item.icon}`} style={{ fontSize: 14 }} />
