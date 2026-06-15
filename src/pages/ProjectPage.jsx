@@ -74,12 +74,6 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
               <Tag key={item}>{item}</Tag>
             ))}
           </div>
-          <div className="inline-actions">
-            <a href={photosUrl} target="_blank" rel="noreferrer" className="inline-button">
-              <i className="ti ti-photo" />
-              <span>Фотографии проекта</span>
-            </a>
-          </div>
         </Cell>
 
         <Cell style={{ gridColumn: "span 6" }} delay={4}>
@@ -97,6 +91,21 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
         </Cell>
 
         <Cell style={{ gridColumn: "span 12" }} delay={5}>
+          <SectionLabel icon="photo" t={t}>
+            Фотографии
+          </SectionLabel>
+          <div className="detail-author">
+            <p className="detail-text" style={{ margin: 0 }}>
+              Посмотреть фотографии проекта в Telegram.
+            </p>
+            <a href={photosUrl} target="_blank" rel="noreferrer" className="inline-button">
+              <i className="ti ti-photo" />
+              <span>Фотографии проекта</span>
+            </a>
+          </div>
+        </Cell>
+
+        <Cell style={{ gridColumn: "span 12" }} delay={6}>
           <SectionLabel icon="user-circle" t={t}>
             Автор
           </SectionLabel>
