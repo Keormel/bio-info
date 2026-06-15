@@ -186,7 +186,7 @@ export default function PortfolioApp() {
       <footer className="site-footer">
         <span>Copyright © {new Date().getFullYear()} Keormel. Все права защищены. Скачивание, копирование и редактирование не допускается.</span>
         <span>
-          сode by <a href="#">keormel</a>
+          сode by <a href="https://keormel.xyz">keormel</a>
         </span>
       </footer>
 
