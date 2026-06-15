@@ -95,7 +95,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
               Контакты
             </SectionLabel>
             {contacts.map((contact) => (
-              <a key={contact.label} href={contact.url} className="soft-link" target="_blank" rel="noreferrer">
+              <a key={contact.label} href={contact.url} className="soft-link contact-link" target="_blank" rel="noreferrer">
                 <i className={`ti ${contact.icon}`} style={{ fontSize: 15 }} />
                 <span>{contact.label}</span>
               </a>
@@ -103,7 +103,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
           </Cell>
 
           {/* Time + Stats */}
-          <Cell delay={3}>
+          <Cell delay={3} style={{ marginTop: 28 }}>
             <SectionLabel icon="clock-hour-3" t={t}>
               Локальное время
             </SectionLabel>

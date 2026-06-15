@@ -131,6 +131,10 @@ export default function PortfolioApp() {
     "--topo-line-soft": isDark ? "rgba(255,255,255,0.32)" : "rgba(17,24,39,0.12)",
     "--panel-bg": isDark ? "rgba(18,18,18,0.82)" : "rgba(255,255,255,0.74)",
     "--chip-bg": isDark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.58)",
+    "--contact-link-bg": isDark ? "rgba(124,58,237,0.12)" : "rgba(124,58,237,0.11)",
+    "--contact-link-hover-bg": isDark ? "rgba(124,58,237,0.18)" : "rgba(124,58,237,0.16)",
+    "--contact-link-border": isDark ? "rgba(167,139,250,0.16)" : "rgba(124,58,237,0.26)",
+    "--contact-link-shadow": isDark ? "none" : "0 10px 24px rgba(124,58,237,0.1)",
   };
 
   const goHome = () => navigateTo("/", setRoute);
@@ -468,6 +472,21 @@ export default function PortfolioApp() {
           margin-bottom: 10px;
           padding: 10px 12px;
           color: var(--text);
+        }
+
+        .contact-link {
+          background: var(--contact-link-bg);
+          border: 0.5px solid var(--contact-link-border);
+          box-shadow: var(--contact-link-shadow);
+          font-weight: 600;
+        }
+
+        .contact-link i {
+          color: var(--accent2);
+        }
+
+        .contact-link:hover {
+          background: var(--contact-link-hover-bg);
         }
 
         .theme-button {

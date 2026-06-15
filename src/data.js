@@ -33,9 +33,9 @@ export const stack = [
 ];
 
 export const contacts = [
-  { label: 'Telegram', icon: 'ti-brand-telegram', url: 'https://t.me/USERNAME' },
-  { label: 'GitHub', icon: 'ti-brand-github', url: 'https://github.com/USERNAME' },
-  { label: 'Email', icon: 'ti-mail', url: 'mailto:EMAIL' },
+  { label: 'Telegram', icon: 'ti-brand-telegram', url: 'https://t.me/keormel' },
+  { label: 'GitHub', icon: 'ti-brand-github', url: 'https://github.com/Keormel' },
+  { label: 'Email', icon: 'ti-mail', url: 'mailto:nanualex0716@gmail.com' },
 ];
 
 export const projects = [
