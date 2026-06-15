@@ -27,7 +27,6 @@ export const skills = [
 
 export const stack = [
   { name: 'React', icon: 'ti-brand-react' },
-  { name: 'Next.js', icon: 'ti-brand-nextjs' },
   { name: 'Node.js', icon: 'ti-brand-nodejs' },
   { name: 'SQL', icon: 'ti-database' },
   { name: 'Tailwind', icon: 'ti-brand-tailwind' },
