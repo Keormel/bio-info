@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage.jsx";
 import { PortfolioPage } from "./pages/PortfolioPage.jsx";
 import { ProjectPage } from "./pages/ProjectPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage.jsx";
+import { Analytics } from "@vercel/analytics/next";
 
 const themes = {
   dark: {
