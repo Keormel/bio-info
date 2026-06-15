@@ -16,13 +16,13 @@ export const bio = {
 };
 
 export const skills = [
-  { name: 'React / Next.js', level: 90 },
-  { name: 'TypeScript', level: 80 },
-  { name: 'Node.js / Express', level: 75 },
+  { name: 'React / Next.js', level: 70 },
+  { name: 'TypeScript', level: 67 },
+  { name: 'Node.js / Express', level: 65 },
   { name: 'CSS / Tailwind', level: 85 },
   { name: 'Python', level: 70 },
   { name: 'Java', level: 20 },
-  { name: 'C++', level: 35 },
+  { name: 'C++', level: 32 },
   
 ];
 
@@ -37,7 +37,7 @@ export const stack = [
 export const contacts = [
   { label: 'Telegram', icon: 'ti-brand-telegram', url: 'https://t.me/keormel' },
   { label: 'GitHub', icon: 'ti-brand-github', url: 'https://github.com/Keormel' },
-  { label: 'Email', icon: 'ti-mail', url: 'mailto:nanualex0716@gmail.com' },
+  { label: 'Discord', icon: 'ti-brand-discord', url: 'https://discord.com/users/514528372068450326' },
 ];
 
 export const projects = [
