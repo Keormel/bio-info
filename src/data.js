@@ -29,11 +29,9 @@ export const stack = [
   { name: 'React', icon: 'ti-brand-react' },
   { name: 'Next.js', icon: 'ti-brand-nextjs' },
   { name: 'Node.js', icon: 'ti-brand-nodejs' },
-  { name: 'Git', icon: 'ti-brand-git' },
   { name: 'SQL', icon: 'ti-database' },
   { name: 'Tailwind', icon: 'ti-brand-tailwind' },
   { name: 'Python', icon: 'ti-brand-python' },
-  { name: 'C++', icon: 'ti-brand-cplusplus' },
 ];
 
 export const contacts = [

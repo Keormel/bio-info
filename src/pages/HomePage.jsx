@@ -119,7 +119,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
             <div className="home-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, paddingTop: 16, borderTop: `0.5px solid ${t.border}` }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 20, fontWeight: 700, color: t.accent, marginBottom: 4 }}>{bio.stats.experience}</div>
-                <div style={{ fontSize: 11, color: t.text2, textTransform: "uppercase", letterSpacing: "0.05em" }}>Опыт</div>
+                <div style={{ fontSize: 11, color: t.text2, textTransform: "uppercase", letterSpacing: "0.05em" }}>Лет опыта</div>
               </div>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 20, fontWeight: 700, color: t.accent, marginBottom: 4 }}>{bio.stats.projects}</div>
