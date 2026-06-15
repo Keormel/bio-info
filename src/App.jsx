@@ -421,11 +421,34 @@ export default function PortfolioApp() {
           flex-shrink: 0;
         }
 
+        .project-preview.has-logo {
+          padding: 0;
+          overflow: hidden;
+        }
+
+        .project-preview img {
+          width: 100%;
+          height: 100%;
+          object-fit: var(--project-logo-fit, cover);
+          display: block;
+          border-radius: inherit;
+        }
+
+        .project-preview-letter {
+          font-weight: 800;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+
         .project-preview-large {
           width: 124px;
           height: 124px;
           font-size: 54px;
           border-radius: 24px;
+        }
+
+        .project-preview-large.has-logo {
+          padding: 0;
         }
 
         .project-hero {

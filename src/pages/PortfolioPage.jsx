@@ -2,6 +2,7 @@ import { projects } from "../data.js";
 import { Cell } from "../components/Cell.jsx";
 import { SectionLabel } from "../components/SectionLabel.jsx";
 import { Tag } from "../components/Tag.jsx";
+import { ProjectVisual } from "../components/ProjectVisual.jsx";
 
 export function PortfolioPage({ t, onBackHome, onOpenProject }) {
   return (
@@ -24,12 +25,10 @@ export function PortfolioPage({ t, onBackHome, onOpenProject }) {
         {projects.map((project, index) => (
           <Cell key={project.id} delay={index} style={{ gridColumn: "span 6" }} onClick={() => onOpenProject(project.id)}>
             <div className="project-card-top">
-              <div className="project-preview" style={{ background: project.color }}>
-                <i className={`ti ${project.icon}`} />
-              </div>
+              <ProjectVisual project={project} />
               <div>
-                <div className="project-year">{project.year || "2025"}</div>
-                <div className="project-role">{project.role || "Front-end"}</div>
+                <div className="project-year">{project.date || project.year || "2025"}</div>
+                <div className="project-role">{project.role || "Full-stack"}</div>
               </div>
             </div>
 

@@ -2,6 +2,7 @@ import { bio } from "../data.js";
 import { Cell } from "../components/Cell.jsx";
 import { SectionLabel } from "../components/SectionLabel.jsx";
 import { Tag } from "../components/Tag.jsx";
+import { ProjectVisual } from "../components/ProjectVisual.jsx";
 
 export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
   return (
@@ -11,8 +12,6 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
           <SectionLabel icon="stack" t={t}>
             Кейс
           </SectionLabel>
-          <h1 className="page-title">{project.title}</h1>
-          <p className="page-subtitle">{project.long}</p>
         </div>
         <button className="back-button" onClick={onBackToPortfolio}>
           <i className="ti ti-arrow-left" />
@@ -23,12 +22,10 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
       <div className="project-grid">
         <Cell delay={0} style={{ gridColumn: "span 12" }}>
           <div className="project-hero">
-            <div className="project-preview project-preview-large" style={{ background: project.color }}>
-              <i className={`ti ${project.icon}`} />
-            </div>
+            <ProjectVisual project={project} large />
             <div className="project-hero-text">
               <div className="project-meta-line">
-                <span>{project.year || "2025"}</span>
+                <span>{project.date || project.year || "2025"}</span>
                 <span>{project.role || "Front-end"}</span>
               </div>
               <div className="project-title large">{project.title}</div>
