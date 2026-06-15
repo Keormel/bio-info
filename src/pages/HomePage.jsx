@@ -66,7 +66,7 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
             </div>
             <p style={{ fontSize: 16, color: t.text2, lineHeight: 1.7, marginBottom: 18 }}>{bio.about}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
-              {stack.slice(0, 4).map((item) => (
+              {stack.slice(0, 7).map((item) => (
                 <Tag key={item.name}>{item.name}</Tag>
               ))}
             </div>
@@ -162,6 +162,16 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
                 50% { background-position: 100% 50%; }
                 100% { background-position: 0% 50%; }
               }
+              .portfolio-title {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 8px;
+                background: linear-gradient(135deg, var(--text), var(--accent)) !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                transition: all 0.25s ease !important;
+              }
             `}</style>
             
             {/* Animated accent overlay */}
@@ -171,19 +181,20 @@ export function HomePage({ t, clock, isDark, setIsDark, onGoToPortfolio }) {
               left: 0,
               right: 0,
               bottom: 0,
-              background: `linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0) 50%, rgba(124,58,237,0.08) 100%)`,
+              background: `linear-gradient(135deg, ${t.accent}15 0%, transparent 50%, ${t.accent}08 100%)`,
               pointerEvents: "none",
+              transition: "background 0.25s ease",
             }} />
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <SectionLabel icon="layout-grid" t={t}>
                 Портфолио
               </SectionLabel>
-              <div style={{ fontSize: 28, fontWeight: 700, color: t.text, marginBottom: 8, background: `linear-gradient(135deg, ${t.text} 0%, ${t.accent} 100%)`, backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <div className="portfolio-title">
                 Все проекты
               </div>
               <div style={{ fontSize: 14, color: t.text2, marginBottom: 18, lineHeight: 1.6 }}>
-                Откройте подборку из 25+ работ с кейсами и детализацией каждого проекта
+                Откройте подборку из 10+ работ с кейсами и детализацией каждого проекта
               </div>
               <div className="cta-row" style={{ marginTop: "auto" }}>
                 <span style={{ fontSize: 15, fontWeight: 600 }}>Смотреть всё</span>

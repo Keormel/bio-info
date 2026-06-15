@@ -12,7 +12,7 @@ export function useAge(birthDateString) {
       const diffDays = diffTime / (1000 * 60 * 60 * 24);
       const ageInYears = diffDays / 365.25;
 
-      return ageInYears.toFixed(3);
+      return ageInYears.toFixed(6);
     };
 
     setAge(calculateAge());
