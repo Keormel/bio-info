@@ -48,13 +48,15 @@ export default function PortfolioApp() {
   }, [isDark, project, route.page]);
 
   const containerStyle = {
-    height: route.page === "home" ? "100vh" : "auto",
+    minHeight: "100vh",
     background: t.bg,
     color: t.text,
     padding: route.page === "home" ? "20px 32px" : "24px 16px 36px",
+    display: "flex",
+    flexDirection: "column",
     transition: "background 0.25s ease, color 0.25s ease",
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    overflowY: route.page === "home" ? "hidden" : "auto",
+    fontFamily: "'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    overflowY: "auto",
     overflowX: "hidden",
     "--bg": t.bg,
     "--bg2": t.bg2,
@@ -73,7 +75,7 @@ export default function PortfolioApp() {
 
   return (
     <div className={`portfolio-app ${isDark ? "theme-dark" : "light"} ${ready ? "is-ready" : "is-loading"}`} style={containerStyle}>
-      <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", height: route.page === "home" ? "100%" : "auto" }}>
+      <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", flex: "1 0 auto" }}>
         {route.page === "home" && <HomePage t={t} clock={clock} isDark={isDark} setIsDark={setIsDark} onGoToPortfolio={goPortfolio} />}
 
         {route.page === "portfolio" && <PortfolioPage t={t} onBackHome={goHome} onOpenProject={goProject} />}
@@ -83,7 +85,16 @@ export default function PortfolioApp() {
         {route.page === "project" && !project && <NotFoundPage t={t} onBackHome={goHome} onBackToPortfolio={goPortfolio} />}
       </div>
 
+      <footer className="site-footer">
+        <span>Copyright © {new Date().getFullYear()} Keormel. Все права защищены. Скачивание, копирование и редактирование не допускается.</span>
+        <span>
+          сode by <a href="#">keormel</a>
+        </span>
+      </footer>
+
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
         * { box-sizing: border-box; }
         html, body, #root {
           margin: 0;
@@ -106,6 +117,30 @@ export default function PortfolioApp() {
         .app-shell {
           width: min(1440px, calc(100vw - 32px));
           margin: 0 auto;
+        }
+
+        .site-footer {
+          width: min(1440px, calc(100vw - 32px));
+          margin: 20px auto 0;
+          padding: 16px 0 0;
+          border-top: 0.5px solid var(--border);
+          color: var(--text2);
+          font-size: 13px;
+          line-height: 1.5;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-footer a {
+          color: var(--text);
+          font-weight: 700;
+          text-decoration: none;
+        }
+
+        .site-footer a:hover {
+          color: var(--accent2);
         }
 
         .grid-shell,
@@ -449,6 +484,11 @@ export default function PortfolioApp() {
           .portfolio-grid > .cell,
           .project-grid > .cell {
             grid-column: span 1 !important;
+          }
+
+          .site-footer {
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}</style>
