@@ -15,8 +15,12 @@ export function getRouteFromPath(pathname) {
   return { page: "home" };
 }
 
-export function useRoute() {
+export function useRoute(initialRoute) {
   const [route, setRoute] = useState(() => {
+    if (initialRoute) {
+      return initialRoute;
+    }
+
     if (typeof window === "undefined") {
       return { page: "home" };
     }
@@ -25,6 +29,10 @@ export function useRoute() {
   });
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
     const handlePopState = () => setRoute(getRouteFromPath(window.location.pathname));
 
     window.addEventListener("popstate", handlePopState);

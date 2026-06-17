@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { projects } from "./data.js";
 import { useClock } from "./hooks/useClock.js";
+import { usePageSeo } from "./hooks/usePageSeo.js";
 import { useRoute, useRouteReady, navigateTo } from "./hooks/useRoute.js";
 import { HomePage } from "./pages/HomePage.jsx";
 import { PortfolioPage } from "./pages/PortfolioPage.jsx";
@@ -90,13 +91,16 @@ function TopographicBackground() {
   );
 }
 
-export default function PortfolioApp() {
+export default function PortfolioApp({ initialRoute } = {}) {
   const [isDark, setIsDark] = useState(true);
-  const [route, setRoute] = useRoute();
+  const [route, setRoute] = useRoute(initialRoute);
   const clock = useClock();
   const ready = useRouteReady(route);
   const t = isDark ? themes.dark : themes.light;
   const project = projects.find((item) => item.id === route.projectId);
+  const canUseDom = typeof window !== "undefined";
+
+  usePageSeo(route, project);
 
   useEffect(() => {
     if (typeof document === "undefined") {
@@ -105,35 +109,6 @@ export default function PortfolioApp() {
 
     document.body.classList.toggle("light", !isDark);
   }, [isDark]);
-
-  useEffect(() => {
-    if (typeof document === "undefined") {
-      return;
-    }
-
-    const nickname = "keormel";
-    const frames = [
-      nickname,
-      "keormel.",
-      "keormel..",
-      "keormel...",
-      "eormel k",
-      "ormel ke",
-      "rmel keo",
-      "mel keor",
-      "el keorm",
-      "l keorme",
-    ];
-    let index = 0;
-
-    document.title = frames[index];
-    const titleTimer = window.setInterval(() => {
-      index = (index + 1) % frames.length;
-      document.title = frames[index];
-    }, 650);
-
-    return () => window.clearInterval(titleTimer);
-  }, []);
 
   const containerStyle = {
     minHeight: "100vh",
@@ -172,7 +147,7 @@ export default function PortfolioApp() {
 
   return (
     <div className={`portfolio-app ${isDark ? "theme-dark" : "light"} ${ready ? "is-ready" : "is-loading"}`} style={containerStyle}>
-      <Analytics />
+      {canUseDom && <Analytics />}
       <TopographicBackground />
 
       <div className="app-shell" style={{ display: route.page === "home" ? "flex" : "block", flex: "1 0 auto" }}>
