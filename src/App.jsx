@@ -645,6 +645,21 @@ export default function PortfolioApp({ initialRoute } = {}) {
           background: transparent;
         }
 
+        .project-screenshot {
+          margin-top: 12px;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 0.5px solid var(--border);
+          background: var(--chip-bg);
+        }
+
+        .project-screenshot img {
+          width: 100%;
+          height: auto;
+          display: block;
+          border-radius: inherit;
+        }
+
         .detail-author-name {
           font-size: 18px;
           font-weight: 600;

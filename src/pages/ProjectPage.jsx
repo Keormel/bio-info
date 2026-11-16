@@ -1,12 +1,10 @@
-import { bio, contacts } from "../data.js";
+import { bio } from "../data.js";
 import { Cell } from "../components/Cell.jsx";
 import { SectionLabel } from "../components/SectionLabel.jsx";
 import { Tag } from "../components/Tag.jsx";
 import { ProjectVisual } from "../components/ProjectVisual.jsx";
 
 export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
-  const telegramUrl = contacts.find((contact) => contact.label === "Telegram")?.url || "#";
-  const photosUrl = project.photosUrl || telegramUrl;
 
   return (
     <div className="page-shell">
@@ -38,14 +36,18 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
                 ))}
               </div>
               <div className="inline-actions">
-                <a href={project.url} target="_blank" rel="noreferrer" className="inline-button">
-                  <i className="ti ti-external-link" />
-                  <span>Открыть сайт</span>
-                </a>
-                <a href={project.repo} target="_blank" rel="noreferrer" className="inline-button secondary">
-                  <i className="ti ti-brand-github" />
-                  <span>GitHub</span>
-                </a>
+                {project.url && (
+                  <a href={project.url} target="_blank" rel="noreferrer" className="inline-button">
+                    <i className="ti ti-external-link" />
+                    <span>Открыть сайт</span>
+                  </a>
+                )}
+                {project.repo && (
+                  <a href={project.repo} target="_blank" rel="noreferrer" className="inline-button secondary">
+                    <i className="ti ti-brand-github" />
+                    <span>GitHub</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -90,20 +92,16 @@ export function ProjectPage({ t, project, onBackToPortfolio, onBackHome }) {
           </div>
         </Cell>
 
-        <Cell style={{ gridColumn: "span 12" }} delay={5}>
-          <SectionLabel icon="photo" t={t}>
-            Фотографии
-          </SectionLabel>
-          <div className="detail-author">
-            <p className="detail-text" style={{ margin: 0 }}>
-              Посмотреть фотографии проекта в Telegram.
-            </p>
-            <a href={photosUrl} target="_blank" rel="noreferrer" className="inline-button">
-              <i className="ti ti-photo" />
-              <span>Фотографии проекта</span>
-            </a>
-          </div>
-        </Cell>
+        {project.logo && (
+          <Cell style={{ gridColumn: "span 12" }} delay={5}>
+            <SectionLabel icon="photo" t={t}>
+              Скриншот
+            </SectionLabel>
+            <div className="project-screenshot">
+              <img src={project.logo} alt={`${project.title} screenshot`} />
+            </div>
+          </Cell>
+        )}
 
         <Cell style={{ gridColumn: "span 12" }} delay={6}>
           <SectionLabel icon="user-circle" t={t}>
